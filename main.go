@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 	"time"
 )
 
@@ -13,7 +14,13 @@ func main() {
 
 	m.HandleFunc("/", handlePage) // send requests for the root path endpoint to handlePage
 
-	const port = "8010" // no magic numbers, set port
+	// get port from os via shell (terminal)
+	port := os.Getenv("PORT")
+
+	// edge case no port set
+	if port == "" {
+		port = "8010" // fallback default
+	}
 
 	// define the server struct
 	srv := http.Server{
