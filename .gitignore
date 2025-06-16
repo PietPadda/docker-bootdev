@@ -7,6 +7,7 @@
 *.dll
 *.so
 *.dylib
+docker-bootdev
 
 # Test binary, built with `go test -c`
 *.test
